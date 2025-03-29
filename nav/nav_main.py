@@ -1,10 +1,10 @@
 import pygame
 import serial
-import math_func   
+import math_func
 from time import sleep
 
 # CHANGE PORT ACCORDINGLY
-arduino = serial.Serial('/dev/cu.usbmodem1301', 9600)
+arduino = serial.Serial('/dev/cu.usbmodem21301', 9600)
 
 pygame.init()
 pygame.joystick.init()
@@ -70,7 +70,7 @@ while loop:
         B = message[6]
 
         # construct string, send to arduino, received info back
-        messageToSend = MathFunc.makeString(Lx, Ly, Rx, A, B, 0, 0, 100, 100)
+        messageToSend = math_func.makeString(Lx, Ly, Rx, A, B, 0, 0, 100, 100)
         messageToSend = messageToSend.encode("ascii")
 
         arduino.write(messageToSend) 
