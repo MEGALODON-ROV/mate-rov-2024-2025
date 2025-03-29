@@ -69,9 +69,11 @@ while loop:
         A = message[5]
         B = message[6]
 
+        throttle_y = message[2]
+        throttle_x = message[4]
+
         # construct string, send to arduino, received info back
-        messageToSend = math_func.makeString(Lx, Ly, Rx, A, B, 0, 0, 100, 100)
-        messageToSend = messageToSend.encode("ascii")
+        messageToSend = math_func.makeString(Lx, Ly, Rx, A, B, throttle_y, throttle_x, 100, 100) 
 
         arduino.write(messageToSend) 
 
