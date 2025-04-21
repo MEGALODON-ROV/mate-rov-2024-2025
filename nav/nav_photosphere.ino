@@ -60,16 +60,15 @@ void setup() {
 
   // having the ROV move around to take pics
 
-
+  getAngle(1);
+  int stopYaw = yaw
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  getAngle(1);
-  int stopAngle = pitch
-
+    getAngle(1);
   
-  while (getAngle(1) != stopAngle) {
+  while (yaw != stopYaw) {
     FR_T.writeMicroseconds(1900);
     BR_T.writeMicroseconds(1900);
     FL_T.writeMicroseconds(1100);
@@ -82,6 +81,7 @@ void loop() {
   FL_T.writeMicroseconds(1500);
   BL_T.writeMicroseconds(1500);
 
+  delay(50)
 }
 
 // change SDA/SCL on mux
@@ -123,10 +123,14 @@ void getAngle(int channel) {
   t = Wire.read();
   zAccel = (t << 8) | Wire.read();
 
+  previousTime = currentTime;        // Previous time is stored before the actual time read
+  currentTime = millis();            // Current time actual time read
+  elapsedTime = (currentTime - previousTime) / 1000; // Divide by 1000 to get seconds
+
   // IN RADIANS
   roll = atan2(yAccel , zAccel);
   pitch = atan2(-xAccel , sqrt(yAccel * yAccel + zAccel * zAccel)); //account for roll already applied
-  yaw = atan2(yAccel)
+  yaw = yaw + zAccel*elapsedTime
   
   
   // convert to degrees
