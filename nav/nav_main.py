@@ -4,7 +4,8 @@ import math_func
 from time import sleep
 
 # CHANGE PORT ACCORDINGLY
-arduino = serial.Serial('/dev/cu.usbmodem21301', 9600)
+# /dev/cu.usbmodem21301 for Mac
+arduino = serial.Serial('21301', 9600)
 
 pygame.init()
 pygame.joystick.init()
