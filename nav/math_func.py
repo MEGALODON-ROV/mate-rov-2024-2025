@@ -15,7 +15,7 @@ def makeString(Lx, Ly, Rx, A, B, throttle_y, throttle_x, percent_horiz, percent_
     Ly = Ly * (1)  
     Lx = Lx * (-1)
     Rx = Rx * (1)
-    throttle_y = throttle_y * (1)
+    throttle_y = throttle_y * (-1)
     throttle_x = throttle_x * (-1)
     
     #deadband 0.1 deviation
