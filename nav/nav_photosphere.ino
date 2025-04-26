@@ -61,7 +61,7 @@ void setup() {
   // having the ROV move around to take pics
 
   getAngle(1);
-  int stopYaw = yaw
+  int stopYaw = yaw;
 }
 
 void loop() {
@@ -81,7 +81,7 @@ void loop() {
   FL_T.writeMicroseconds(1500);
   BL_T.writeMicroseconds(1500);
 
-  delay(50)
+  delay(50);
 }
 
 // change SDA/SCL on mux
